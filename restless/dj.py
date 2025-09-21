@@ -1,7 +1,11 @@
 import six
 
 from django.conf import settings
-from django.conf.urls import url
+try:
+    from django.conf.urls import include, url
+except ImportError:
+    from django.urls import re_path as url
+    from django.urls import include
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.paginator import Paginator
 from django.http import HttpResponse, Http404
